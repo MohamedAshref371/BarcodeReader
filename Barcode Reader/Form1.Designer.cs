@@ -34,6 +34,7 @@
             this.stopBtn = new System.Windows.Forms.Button();
             this.time = new System.Windows.Forms.NumericUpDown();
             this.setTimeBtn = new System.Windows.Forms.Button();
+            this.audioPlay = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.time)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,11 +110,23 @@
             this.setTimeBtn.UseVisualStyleBackColor = true;
             this.setTimeBtn.Click += new System.EventHandler(this.SetTimeBtn_Click);
             // 
+            // audioPlay
+            // 
+            this.audioPlay.AutoSize = true;
+            this.audioPlay.Location = new System.Drawing.Point(371, 265);
+            this.audioPlay.Name = "audioPlay";
+            this.audioPlay.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.audioPlay.Size = new System.Drawing.Size(157, 17);
+            this.audioPlay.TabIndex = 9;
+            this.audioPlay.Text = "إصدار صوت عند قراءة الباركود";
+            this.audioPlay.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 306);
+            this.Controls.Add(this.audioPlay);
             this.Controls.Add(this.setTimeBtn);
             this.Controls.Add(this.time);
             this.Controls.Add(this.stopBtn);
@@ -124,6 +137,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.time)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -135,6 +149,7 @@
         private System.Windows.Forms.Button stopBtn;
         private System.Windows.Forms.NumericUpDown time;
         private System.Windows.Forms.Button setTimeBtn;
+        private System.Windows.Forms.CheckBox audioPlay;
     }
 }
 

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsInput;
 using WindowsInput.Native;
@@ -67,15 +63,15 @@ namespace Barcode_Reader
 
         public void Execute(string s)
         {
-            this.Invoke(new Action(() => {
-                Clipboard.Clear();
-                Clipboard.SetText(s);
-            }));
+            Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(s); }));
 
             sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
             sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
 
-            this.Invoke(new Action(() => timer.Start() ));
+            if (audioPlay.Checked && System.IO.File.Exists("success.wav"))
+                new System.Media.SoundPlayer("success.wav").Play();
+            
+            Invoke(new Action(() => timer.Start() ));
         }
         
     }
