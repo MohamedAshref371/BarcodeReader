@@ -137,6 +137,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Convert Camera To Barcode Reader";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.time)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

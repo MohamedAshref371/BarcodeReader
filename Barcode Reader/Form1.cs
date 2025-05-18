@@ -72,6 +72,11 @@ namespace Barcode_Reader
             
             Invoke(new Action(() => timer.Start() ));
         }
-        
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (stopBtn.Enabled)
+                StopBtn_Click(null, null);
+        }
     }
 }
