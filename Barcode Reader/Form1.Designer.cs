@@ -40,13 +40,13 @@
             // 
             // startBtn
             // 
+            this.startBtn.Enabled = false;
             this.startBtn.Location = new System.Drawing.Point(239, 174);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(75, 55);
             this.startBtn.TabIndex = 0;
             this.startBtn.Text = "البدأ";
             this.startBtn.UseVisualStyleBackColor = true;
-            this.startBtn.Visible = false;
             this.startBtn.Click += new System.EventHandler(this.StartBtn_Click);
             // 
             // camerasBtn
@@ -69,13 +69,13 @@
             // 
             // stopBtn
             // 
+            this.stopBtn.Enabled = false;
             this.stopBtn.Location = new System.Drawing.Point(25, 174);
             this.stopBtn.Name = "stopBtn";
             this.stopBtn.Size = new System.Drawing.Size(75, 55);
             this.stopBtn.TabIndex = 6;
             this.stopBtn.Text = "ايقاف";
             this.stopBtn.UseVisualStyleBackColor = true;
-            this.stopBtn.Visible = false;
             this.stopBtn.Click += new System.EventHandler(this.StopBtn_Click);
             // 
             // time
@@ -125,7 +125,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 306);
+            this.ClientSize = new System.Drawing.Size(380, 289);
             this.Controls.Add(this.audioPlay);
             this.Controls.Add(this.setTimeBtn);
             this.Controls.Add(this.time);
