@@ -57,7 +57,6 @@ namespace Barcode_Reader
             scanner.Stop();
 
             stopBtn.Enabled = false;
-            startBtn.Enabled = false;
             camerasBtn.Enabled = true;
         }
 
