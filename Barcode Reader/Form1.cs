@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using WindowsInput;
 using WindowsInput.Native;
@@ -26,6 +23,9 @@ namespace Barcode_Reader
                 timer.Stop();
                 scanner.Resume();
             };
+
+            if (System.IO.File.Exists("success.wav"))
+                wavFile = new System.Media.SoundPlayer("success.wav");
         }
 
         private void SetTimeBtn_Click(object sender, EventArgs e) => timer.Interval = (int)time.Value;
@@ -60,6 +60,7 @@ namespace Barcode_Reader
             camerasBtn.Enabled = true;
         }
 
+        readonly System.Media.SoundPlayer wavFile = null;
         public void Execute(string s)
         {
             Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(s); }));
@@ -67,8 +68,11 @@ namespace Barcode_Reader
             sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
             sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
 
-            if (audioPlay.Checked && System.IO.File.Exists("success.wav"))
-                new System.Media.SoundPlayer("success.wav").Play();
+            if (audioPlay.Checked && wavFile != null)
+            {
+                wavFile.Stop();
+                wavFile.Play();
+            }
             
             Invoke(new Action(() => timer.Start() ));
         }
