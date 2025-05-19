@@ -95,7 +95,7 @@
             this.time.Size = new System.Drawing.Size(75, 20);
             this.time.TabIndex = 7;
             this.time.Value = new decimal(new int[] {
-            500,
+            1000,
             0,
             0,
             0});

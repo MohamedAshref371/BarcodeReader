@@ -65,7 +65,9 @@ namespace Barcode_Reader
         public void Execute(string s)
         {
             if (s == oldText) return;
-            Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(s); }));
+            oldText = s;
+
+            Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(s); timer.Start(); }));
 
             sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
             sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
@@ -75,9 +77,6 @@ namespace Barcode_Reader
                 wavFile.Stop();
                 wavFile.Play();
             }
-
-            oldText = s;
-            Invoke(new Action(() => timer.Start()));
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
