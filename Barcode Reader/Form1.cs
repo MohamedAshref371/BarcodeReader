@@ -7,9 +7,9 @@ namespace Barcode_Reader
 {
     public partial class Form1 : Form
     {
-        BarcodeScanner scanner = new BarcodeScanner();
-        InputSimulator sim = new InputSimulator();
-        Timer timer = new Timer();
+        readonly BarcodeScanner scanner = new BarcodeScanner();
+        readonly InputSimulator sim = new InputSimulator();
+        readonly Timer timer = new Timer();
         public static Form1 Form;
 
         public Form1()
@@ -21,7 +21,7 @@ namespace Barcode_Reader
             timer.Tick += (s, e) =>
             {
                 timer.Stop();
-                scanner.Resume();
+                oldText = "";
             };
 
             if (System.IO.File.Exists("success.wav"))
@@ -61,8 +61,10 @@ namespace Barcode_Reader
         }
 
         readonly System.Media.SoundPlayer wavFile = null;
+        string oldText;
         public void Execute(string s)
         {
+            if (s == oldText) return;
             Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(s); }));
 
             sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
@@ -73,8 +75,9 @@ namespace Barcode_Reader
                 wavFile.Stop();
                 wavFile.Play();
             }
-            
-            Invoke(new Action(() => timer.Start() ));
+
+            oldText = s;
+            Invoke(new Action(() => timer.Start()));
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

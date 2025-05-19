@@ -42,10 +42,7 @@ public class BarcodeScanner
         var result = reader.Decode(eventArgs.Frame);
 
         if (result != null)
-        {
-            Pause();
             Form1.Form.Execute(result.Text);
-        }
     }
 
     public void Pause()
