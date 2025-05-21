@@ -3,7 +3,6 @@ using AForge.Video.DirectShow;
 using ZXing;
 using System.Linq;
 using System.Drawing;
-using System.Threading.Tasks;
 
 namespace Barcode_Reader
 {
@@ -51,7 +50,7 @@ namespace Barcode_Reader
 
             Bitmap frameCopy = (Bitmap)eventArgs.Frame.Clone();
 
-            Task.Run(() =>
+            System.Threading.Tasks.Task.Run(() =>
             {
                 try
                 {
@@ -63,6 +62,7 @@ namespace Barcode_Reader
                 finally
                 {
                     frameCopy.Dispose();
+                    System.Threading.Thread.Sleep(125);
                     isProcessing = false;
                 }
             });
