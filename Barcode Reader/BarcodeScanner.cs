@@ -3,6 +3,7 @@ using AForge.Video.DirectShow;
 using ZXing;
 using System.Linq;
 using System.Drawing;
+using System.Threading.Tasks;
 
 namespace Barcode_Reader
 {
@@ -10,7 +11,6 @@ namespace Barcode_Reader
     {
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
-        private bool isScanning = false;
 
         private readonly BarcodeReader reader;
 
@@ -35,30 +35,35 @@ namespace Barcode_Reader
         public void Resume()
         {
             videoSource.NewFrame += Video_NewFrame;
-            isScanning = true;
         }
 
         private bool isProcessing = false;
         private void Video_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            if (!isScanning || isProcessing) return;
+            if (isProcessing) return;
             isProcessing = true;
 
-            try {
-                using (Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone())
+            Bitmap frameCopy = (Bitmap)eventArgs.Frame.Clone();
+
+            Task.Run(() =>
+            {
+                try
                 {
-                    Result result = reader.Decode(bitmap);
+                    var result = reader.Decode(frameCopy);
                     if (result != null)
                         Form1.Form.Execute(result.Text);
                 }
-            } catch { }
-
-            isProcessing = false;
+                catch { }
+                finally
+                {
+                    frameCopy.Dispose();
+                    isProcessing = false;
+                }
+            });
         }
 
         public void Pause()
         {
-            isScanning = false;
             videoSource.NewFrame -= Video_NewFrame;
         }
 
