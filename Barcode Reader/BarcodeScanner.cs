@@ -26,15 +26,19 @@ namespace Barcode_Reader
             return videoDevices.Cast<FilterInfo>().Select(f => f.Name).ToArray();
         }
 
-        public string[] Ready(int i = 0)
+        public string[] Ready(int camera, out int lowestQualitySettingIndex)
         {
-            videoSource = new VideoCaptureDevice(videoDevices[i].MonikerString);
-            return videoSource.VideoCapabilities.Select(cap => $"{cap.FrameSize.Width}x{cap.FrameSize.Height} , FPS: {cap.AverageFrameRate}").ToArray();
+            videoSource = new VideoCaptureDevice(videoDevices[camera].MonikerString);
+            
+            VideoCapabilities[] caps = videoSource.VideoCapabilities;
+            lowestQualitySettingIndex = Enumerable.Range(0, caps.Length).OrderBy(i => caps[i].FrameSize.Width * caps[i].FrameSize.Height * caps[i].AverageFrameRate).FirstOrDefault();
+            
+            return caps.Select(cap => $"{cap.FrameSize.Width}x{cap.FrameSize.Height} @ fps {cap.AverageFrameRate}").ToArray();
         }
 
-        public void Start(int i = 0)
+        public void Start(int quality = 0)
         {
-            videoSource.VideoResolution = videoSource.VideoCapabilities[i];
+            videoSource.VideoResolution = videoSource.VideoCapabilities[quality];
             videoSource.NewFrame += Video_NewFrame;
             videoSource.Start();
         }

@@ -62,12 +62,13 @@
             this.camerasBtn.Name = "camerasBtn";
             this.camerasBtn.Size = new System.Drawing.Size(75, 37);
             this.camerasBtn.TabIndex = 1;
-            this.camerasBtn.Text = "الكاميرات";
+            this.camerasBtn.Text = "قائمة الكاميرات";
             this.camerasBtn.UseVisualStyleBackColor = true;
             this.camerasBtn.Click += new System.EventHandler(this.CamerasBtn_Click);
             // 
             // cameras
             // 
+            this.cameras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cameras.FormattingEnabled = true;
             this.cameras.Location = new System.Drawing.Point(19, 21);
             this.cameras.Name = "cameras";
@@ -195,6 +196,7 @@
             // 
             // qualities
             // 
+            this.qualities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.qualities.FormattingEnabled = true;
             this.qualities.Location = new System.Drawing.Point(19, 64);
             this.qualities.Name = "qualities";
@@ -208,7 +210,7 @@
             this.qualityBtn.Name = "qualityBtn";
             this.qualityBtn.Size = new System.Drawing.Size(75, 37);
             this.qualityBtn.TabIndex = 16;
-            this.qualityBtn.Text = "الدقة";
+            this.qualityBtn.Text = "جلب قائمة الجودات";
             this.qualityBtn.UseVisualStyleBackColor = true;
             this.qualityBtn.Click += new System.EventHandler(this.QualityBtn_Click);
             // 

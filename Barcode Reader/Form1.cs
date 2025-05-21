@@ -30,23 +30,31 @@ namespace Barcode_Reader
 
         private void CamerasBtn_Click(object sender, EventArgs e)
         {
-            string[] arr = scanner.Init();
-
             cameras.Items.Clear();
+            qualities.Items.Clear();
+            qualityBtn.Enabled = false;
+
+            string[] arr = scanner.Init();
+            if (arr.Length == 0)
+            {
+                MessageBox.Show("لا يوجد كاميرات");
+                return;
+            }
+            
             cameras.Items.AddRange(arr);
             cameras.SelectedIndex = 0;
 
-            camerasBtn.Enabled = false;
+            startBtn.Enabled = false;
             qualityBtn.Enabled = true;
         }
 
         private void QualityBtn_Click(object sender, EventArgs e)
         {
-            string[] arr = scanner.Ready(cameras.SelectedIndex);
-
             qualities.Items.Clear();
+            string[] arr = scanner.Ready(cameras.SelectedIndex, out int idx);
+
             qualities.Items.AddRange(arr);
-            qualities.SelectedIndex = 0;
+            qualities.SelectedIndex = idx;
 
             qualityBtn.Enabled = false;
             startBtn.Enabled = true;
@@ -56,6 +64,7 @@ namespace Barcode_Reader
         {
             scanner.Start(qualities.SelectedIndex);
 
+            camerasBtn.Enabled = false;
             startBtn.Enabled = false;
             stopBtn.Enabled = true;
         }
