@@ -28,8 +28,6 @@ namespace Barcode_Reader
                 wavFile = new System.Media.SoundPlayer("success.wav");
         }
 
-        private void SetTimeBtn_Click(object sender, EventArgs e) => timer.Interval = (int)time.Value;
-
         private void CamerasBtn_Click(object sender, EventArgs e)
         {
             string[] arr = scanner.Init();
@@ -72,7 +70,7 @@ namespace Barcode_Reader
             sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
             sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
 
-            if (audioPlay.Checked && wavFile != null)
+            if (AudioPlay && wavFile != null)
             {
                 wavFile.Stop();
                 wavFile.Play();
@@ -83,6 +81,45 @@ namespace Barcode_Reader
         {
             if (stopBtn.Enabled)
                 StopBtn_Click(null, null);
+        }
+
+        private void Time_ValueChanged(object sender, EventArgs e)
+        {
+            timer.Interval = (int)(time.Value * 1000);
+        }
+
+        bool CopyCheck = true;
+        private void CopyCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            CopyCheck = copyCheck.Checked;
+            textBox1.Visible = !CopyCheck;
+            
+            if (!CopyCheck)
+                pasteCheck.Checked = false;
+        }
+
+        bool PasteCheck = true;
+        private void PasteCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            PasteCheck = pasteCheck.Checked;
+            if (PasteCheck)
+                copyCheck.Checked = true;
+            else
+                enterCheck.Checked = false;
+        }
+
+        bool EnterCheck = true;
+        private void EnterCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            EnterCheck = enterCheck.Checked;
+            if (EnterCheck)
+                pasteCheck.Checked = true;
+        }
+
+        bool AudioPlay = true;
+        private void AudioPlay_CheckedChanged(object sender, EventArgs e)
+        {
+            AudioPlay = audioPlay.Checked;
         }
     }
 }
