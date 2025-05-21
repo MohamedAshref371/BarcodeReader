@@ -65,11 +65,16 @@ namespace Barcode_Reader
             if (s == oldText) return;
             oldText = s;
 
-            Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(s); timer.Start(); }));
+            if (CopyCheck)
+            {
+                Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(s); timer.Start(); }));
 
-            sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
-            sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-
+                if (PasteCheck) sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
+                if (EnterCheck) sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+            }
+            else
+                Invoke(new Action(() => { textBox1.Text = s; timer.Start(); }));
+            
             if (AudioPlay && wavFile != null)
             {
                 wavFile.Stop();
