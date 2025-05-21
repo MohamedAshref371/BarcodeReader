@@ -17,7 +17,7 @@ namespace Barcode_Reader
             InitializeComponent();
             Form = this;
 
-            timer.Interval = (int)time.Value;
+            Time_ValueChanged(null, null);
             timer.Tick += (s, e) =>
             {
                 timer.Stop();
@@ -60,9 +60,11 @@ namespace Barcode_Reader
 
         readonly System.Media.SoundPlayer wavFile = null;
         string oldText;
+        bool isProcessing = false;
         public void Execute(string s)
         {
-            if (s == oldText) return;
+            if (isProcessing || s == oldText) return;
+            isProcessing = true;
             oldText = s;
 
             if (CopyCheck)
@@ -75,11 +77,9 @@ namespace Barcode_Reader
             else
                 Invoke(new Action(() => { textBox1.Text = s; timer.Start(); }));
             
-            if (AudioPlay && wavFile != null)
-            {
-                wavFile.Stop();
-                wavFile.Play();
-            }
+            if (AudioPlay && wavFile != null) { wavFile.Stop(); wavFile.Play(); }
+
+            isProcessing = false;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
