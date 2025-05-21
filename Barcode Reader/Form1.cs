@@ -37,13 +37,24 @@ namespace Barcode_Reader
             cameras.SelectedIndex = 0;
 
             camerasBtn.Enabled = false;
+            qualityBtn.Enabled = true;
+        }
+
+        private void QualityBtn_Click(object sender, EventArgs e)
+        {
+            string[] arr = scanner.Ready(cameras.SelectedIndex);
+
+            qualities.Items.Clear();
+            qualities.Items.AddRange(arr);
+            qualities.SelectedIndex = 0;
+
+            qualityBtn.Enabled = false;
             startBtn.Enabled = true;
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            scanner.Start(cameras.SelectedIndex);
-            scanner.Resume();
+            scanner.Start(qualities.SelectedIndex);
 
             startBtn.Enabled = false;
             stopBtn.Enabled = true;
@@ -51,7 +62,6 @@ namespace Barcode_Reader
 
         private void StopBtn_Click(object sender, EventArgs e)
         {
-            scanner.Pause();
             scanner.Stop();
 
             stopBtn.Enabled = false;

@@ -26,15 +26,17 @@ namespace Barcode_Reader
             return videoDevices.Cast<FilterInfo>().Select(f => f.Name).ToArray();
         }
 
-        public void Start(int i = 0)
+        public string[] Ready(int i = 0)
         {
             videoSource = new VideoCaptureDevice(videoDevices[i].MonikerString);
-            videoSource.Start();
+            return videoSource.VideoCapabilities.Select(cap => $"{cap.FrameSize.Width}x{cap.FrameSize.Height} , FPS: {cap.AverageFrameRate}").ToArray();
         }
 
-        public void Resume()
+        public void Start(int i = 0)
         {
+            videoSource.VideoResolution = videoSource.VideoCapabilities[i];
             videoSource.NewFrame += Video_NewFrame;
+            videoSource.Start();
         }
 
         private bool isProcessing = false;
@@ -62,13 +64,9 @@ namespace Barcode_Reader
             });
         }
 
-        public void Pause()
-        {
-            videoSource.NewFrame -= Video_NewFrame;
-        }
-
         public void Stop()
         {
+            videoSource.NewFrame -= Video_NewFrame;
             if (videoSource != null && videoSource.IsRunning)
             {
                 videoSource.SignalToStop();

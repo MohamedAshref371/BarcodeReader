@@ -40,13 +40,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.qualities = new System.Windows.Forms.ComboBox();
+            this.qualityBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.time)).BeginInit();
             this.SuspendLayout();
             // 
             // startBtn
             // 
             this.startBtn.Enabled = false;
-            this.startBtn.Location = new System.Drawing.Point(166, 71);
+            this.startBtn.Location = new System.Drawing.Point(166, 107);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(75, 37);
             this.startBtn.TabIndex = 0;
@@ -56,7 +58,7 @@
             // 
             // camerasBtn
             // 
-            this.camerasBtn.Location = new System.Drawing.Point(249, 21);
+            this.camerasBtn.Location = new System.Drawing.Point(249, 12);
             this.camerasBtn.Name = "camerasBtn";
             this.camerasBtn.Size = new System.Drawing.Size(75, 37);
             this.camerasBtn.TabIndex = 1;
@@ -67,7 +69,7 @@
             // cameras
             // 
             this.cameras.FormattingEnabled = true;
-            this.cameras.Location = new System.Drawing.Point(19, 30);
+            this.cameras.Location = new System.Drawing.Point(19, 21);
             this.cameras.Name = "cameras";
             this.cameras.Size = new System.Drawing.Size(224, 21);
             this.cameras.TabIndex = 2;
@@ -75,7 +77,7 @@
             // stopBtn
             // 
             this.stopBtn.Enabled = false;
-            this.stopBtn.Location = new System.Drawing.Point(85, 71);
+            this.stopBtn.Location = new System.Drawing.Point(85, 107);
             this.stopBtn.Name = "stopBtn";
             this.stopBtn.Size = new System.Drawing.Size(75, 37);
             this.stopBtn.TabIndex = 6;
@@ -86,7 +88,7 @@
             // time
             // 
             this.time.DecimalPlaces = 2;
-            this.time.Location = new System.Drawing.Point(237, 128);
+            this.time.Location = new System.Drawing.Point(237, 164);
             this.time.Maximum = new decimal(new int[] {
             10,
             0,
@@ -112,7 +114,7 @@
             this.audioPlay.AutoSize = true;
             this.audioPlay.Checked = true;
             this.audioPlay.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.audioPlay.Location = new System.Drawing.Point(103, 275);
+            this.audioPlay.Location = new System.Drawing.Point(103, 311);
             this.audioPlay.Name = "audioPlay";
             this.audioPlay.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.audioPlay.Size = new System.Drawing.Size(157, 17);
@@ -126,7 +128,7 @@
             this.enterCheck.AutoSize = true;
             this.enterCheck.Checked = true;
             this.enterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.enterCheck.Location = new System.Drawing.Point(132, 249);
+            this.enterCheck.Location = new System.Drawing.Point(132, 285);
             this.enterCheck.Name = "enterCheck";
             this.enterCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.enterCheck.Size = new System.Drawing.Size(128, 17);
@@ -140,7 +142,7 @@
             this.pasteCheck.AutoSize = true;
             this.pasteCheck.Checked = true;
             this.pasteCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.pasteCheck.Location = new System.Drawing.Point(98, 226);
+            this.pasteCheck.Location = new System.Drawing.Point(98, 262);
             this.pasteCheck.Name = "pasteCheck";
             this.pasteCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.pasteCheck.Size = new System.Drawing.Size(162, 17);
@@ -154,7 +156,7 @@
             this.copyCheck.AutoSize = true;
             this.copyCheck.Checked = true;
             this.copyCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.copyCheck.Location = new System.Drawing.Point(75, 203);
+            this.copyCheck.Location = new System.Drawing.Point(75, 239);
             this.copyCheck.Name = "copyCheck";
             this.copyCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.copyCheck.Size = new System.Drawing.Size(185, 17);
@@ -166,7 +168,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(296, 131);
+            this.label1.Location = new System.Drawing.Point(296, 167);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(32, 13);
@@ -176,7 +178,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 131);
+            this.label2.Location = new System.Drawing.Point(14, 167);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(221, 13);
@@ -185,17 +187,38 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 165);
+            this.textBox1.Location = new System.Drawing.Point(12, 201);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 20);
             this.textBox1.TabIndex = 15;
             this.textBox1.Visible = false;
             // 
+            // qualities
+            // 
+            this.qualities.FormattingEnabled = true;
+            this.qualities.Location = new System.Drawing.Point(19, 64);
+            this.qualities.Name = "qualities";
+            this.qualities.Size = new System.Drawing.Size(224, 21);
+            this.qualities.TabIndex = 17;
+            // 
+            // qualityBtn
+            // 
+            this.qualityBtn.Enabled = false;
+            this.qualityBtn.Location = new System.Drawing.Point(249, 55);
+            this.qualityBtn.Name = "qualityBtn";
+            this.qualityBtn.Size = new System.Drawing.Size(75, 37);
+            this.qualityBtn.TabIndex = 16;
+            this.qualityBtn.Text = "الدقة";
+            this.qualityBtn.UseVisualStyleBackColor = true;
+            this.qualityBtn.Click += new System.EventHandler(this.QualityBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 306);
+            this.ClientSize = new System.Drawing.Size(341, 342);
+            this.Controls.Add(this.qualities);
+            this.Controls.Add(this.qualityBtn);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.copyCheck);
@@ -233,6 +256,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox qualities;
+        private System.Windows.Forms.Button qualityBtn;
     }
 }
 
