@@ -33,7 +33,7 @@ namespace Barcode_Reader
             VideoCapabilities[] caps = videoSource.VideoCapabilities;
             lowestQualitySettingIndex = Enumerable.Range(0, caps.Length).OrderBy(i => caps[i].FrameSize.Width * caps[i].FrameSize.Height * caps[i].AverageFrameRate).FirstOrDefault();
             
-            return caps.Select(cap => $"{cap.FrameSize.Width}x{cap.FrameSize.Height} @ fps {cap.AverageFrameRate}").ToArray();
+            return caps.Select(cap => $"{cap.FrameSize.Width}x{cap.FrameSize.Height}   {cap.AverageFrameRate}fps").ToArray();
         }
 
         public void Start(int quality = 0)
