@@ -69,13 +69,13 @@ namespace Barcode_Reader
 
             if (CopyCheck)
             {
-                Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(s); timer.Start(); }));
+                Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(s); timer.Stop(); timer.Start(); }));
 
                 if (PasteCheck) sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
                 if (EnterCheck) sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
             }
             else
-                Invoke(new Action(() => { textBox1.Text = s; timer.Start(); }));
+                Invoke(new Action(() => { textBox1.Text = s; timer.Stop(); timer.Start(); }));
             
             if (AudioPlay && wavFile != null) { wavFile.Stop(); wavFile.Play(); }
 
