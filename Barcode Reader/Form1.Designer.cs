@@ -53,7 +53,7 @@
             this.startBtn.Location = new System.Drawing.Point(166, 107);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(75, 37);
-            this.startBtn.TabIndex = 0;
+            this.startBtn.TabIndex = 4;
             this.startBtn.Text = "البدأ";
             this.startBtn.UseVisualStyleBackColor = true;
             this.startBtn.Click += new System.EventHandler(this.StartBtn_Click);
@@ -63,7 +63,7 @@
             this.camerasBtn.Location = new System.Drawing.Point(249, 12);
             this.camerasBtn.Name = "camerasBtn";
             this.camerasBtn.Size = new System.Drawing.Size(75, 37);
-            this.camerasBtn.TabIndex = 1;
+            this.camerasBtn.TabIndex = 0;
             this.camerasBtn.Text = "قائمة الكاميرات";
             this.camerasBtn.UseVisualStyleBackColor = true;
             this.camerasBtn.Click += new System.EventHandler(this.CamerasBtn_Click);
@@ -71,11 +71,13 @@
             // cameras
             // 
             this.cameras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cameras.Enabled = false;
             this.cameras.FormattingEnabled = true;
             this.cameras.Location = new System.Drawing.Point(19, 21);
             this.cameras.Name = "cameras";
             this.cameras.Size = new System.Drawing.Size(224, 21);
-            this.cameras.TabIndex = 2;
+            this.cameras.TabIndex = 1;
+            this.cameras.SelectedIndexChanged += new System.EventHandler(this.Cameras_SelectedIndexChanged);
             // 
             // stopBtn
             // 
@@ -83,7 +85,7 @@
             this.stopBtn.Location = new System.Drawing.Point(85, 107);
             this.stopBtn.Name = "stopBtn";
             this.stopBtn.Size = new System.Drawing.Size(75, 37);
-            this.stopBtn.TabIndex = 6;
+            this.stopBtn.TabIndex = 5;
             this.stopBtn.Text = "ايقاف";
             this.stopBtn.UseVisualStyleBackColor = true;
             this.stopBtn.Click += new System.EventHandler(this.StopBtn_Click);
@@ -104,7 +106,7 @@
             0});
             this.time.Name = "time";
             this.time.Size = new System.Drawing.Size(56, 20);
-            this.time.TabIndex = 7;
+            this.time.TabIndex = 12;
             this.time.Value = new decimal(new int[] {
             3,
             0,
@@ -135,7 +137,7 @@
             this.enterCheck.Name = "enterCheck";
             this.enterCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.enterCheck.Size = new System.Drawing.Size(128, 17);
-            this.enterCheck.TabIndex = 10;
+            this.enterCheck.TabIndex = 8;
             this.enterCheck.Text = "ضغط enter بعد اللصق";
             this.enterCheck.UseVisualStyleBackColor = true;
             this.enterCheck.CheckedChanged += new System.EventHandler(this.EnterCheck_CheckedChanged);
@@ -149,7 +151,7 @@
             this.pasteCheck.Name = "pasteCheck";
             this.pasteCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.pasteCheck.Size = new System.Drawing.Size(162, 17);
-            this.pasteCheck.TabIndex = 11;
+            this.pasteCheck.TabIndex = 7;
             this.pasteCheck.Text = "لصق النص بعد النسخ مباشرة";
             this.pasteCheck.UseVisualStyleBackColor = true;
             this.pasteCheck.CheckedChanged += new System.EventHandler(this.PasteCheck_CheckedChanged);
@@ -163,7 +165,7 @@
             this.copyCheck.Name = "copyCheck";
             this.copyCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.copyCheck.Size = new System.Drawing.Size(185, 17);
-            this.copyCheck.TabIndex = 12;
+            this.copyCheck.TabIndex = 6;
             this.copyCheck.Text = "نسخ النص من الباركود إلى الحافظة";
             this.copyCheck.UseVisualStyleBackColor = true;
             this.copyCheck.CheckedChanged += new System.EventHandler(this.CopyCheck_CheckedChanged);
@@ -193,18 +195,19 @@
             this.textBox1.Location = new System.Drawing.Point(12, 195);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 20);
-            this.textBox1.TabIndex = 15;
+            this.textBox1.TabIndex = 13;
             this.textBox1.Text = "https://github.com/MohamedAshref371/BarcodeReader";
             this.textBox1.Visible = false;
             // 
             // qualities
             // 
             this.qualities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.qualities.Enabled = false;
             this.qualities.FormattingEnabled = true;
             this.qualities.Location = new System.Drawing.Point(19, 64);
             this.qualities.Name = "qualities";
             this.qualities.Size = new System.Drawing.Size(224, 21);
-            this.qualities.TabIndex = 17;
+            this.qualities.TabIndex = 3;
             // 
             // qualityBtn
             // 
@@ -212,7 +215,7 @@
             this.qualityBtn.Location = new System.Drawing.Point(249, 55);
             this.qualityBtn.Name = "qualityBtn";
             this.qualityBtn.Size = new System.Drawing.Size(75, 37);
-            this.qualityBtn.TabIndex = 16;
+            this.qualityBtn.TabIndex = 2;
             this.qualityBtn.Text = "جلب قائمة الجودات";
             this.qualityBtn.UseVisualStyleBackColor = true;
             this.qualityBtn.Click += new System.EventHandler(this.QualityBtn_Click);
@@ -224,7 +227,7 @@
             this.rotateCheck.Name = "rotateCheck";
             this.rotateCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rotateCheck.Size = new System.Drawing.Size(136, 17);
-            this.rotateCheck.TabIndex = 18;
+            this.rotateCheck.TabIndex = 10;
             this.rotateCheck.Text = "دعم قراءة الباركود المائل";
             this.rotateCheck.UseVisualStyleBackColor = true;
             this.rotateCheck.CheckedChanged += new System.EventHandler(this.RotateCheck_CheckedChanged);
@@ -236,7 +239,7 @@
             this.invertedCheck.Name = "invertedCheck";
             this.invertedCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.invertedCheck.Size = new System.Drawing.Size(139, 17);
-            this.invertedCheck.TabIndex = 19;
+            this.invertedCheck.TabIndex = 11;
             this.invertedCheck.Text = "دعم قراءة الباركود الأبيض";
             this.invertedCheck.UseVisualStyleBackColor = true;
             this.invertedCheck.CheckedChanged += new System.EventHandler(this.InvertedCheck_CheckedChanged);
