@@ -3,7 +3,6 @@ using AForge.Video.DirectShow;
 using ZXing;
 using System.Linq;
 using System.Drawing;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Barcode_Reader
@@ -38,7 +37,7 @@ namespace Barcode_Reader
             
             VideoCapabilities[] caps = videoSource.VideoCapabilities;
             lowestQualitySettingIndex = Enumerable.Range(0, caps.Length).OrderBy(i => caps[i].FrameSize.Width * caps[i].FrameSize.Height).FirstOrDefault();
-            
+
             return caps.Select(cap => $"{cap.FrameSize.Width}x{cap.FrameSize.Height}   {cap.AverageFrameRate}fps").ToArray();
         }
 
@@ -56,7 +55,7 @@ namespace Barcode_Reader
             isProcessing = true;
 
             copyFrame = (Bitmap)eventArgs.Frame.Clone();
-            
+
             Task.Run(TaskRun);
         }
 
