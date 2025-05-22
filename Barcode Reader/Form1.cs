@@ -38,7 +38,7 @@ namespace Barcode_Reader
                 MessageBox.Show("لا يوجد كاميرات");
                 return;
             }
-            
+
             cameras.Items.AddRange(arr);
             cameras.SelectedIndex = 0;
 
@@ -107,6 +107,24 @@ namespace Barcode_Reader
             }
             else
                 Invoke(new Action(() => { textBox1.Text = s; timer.Stop(); timer.Start(); }));
+
+            if (AudioPlay && wavFile != null) { wavFile.Stop(); wavFile.Play(); }
+
+            isProcessing = false;
+        }
+
+        public void MutiExecute(ZXing.Result[] arr)
+        {
+            if (isProcessing) return;
+            isProcessing = true;
+
+            foreach (ZXing.Result res in arr)
+            {
+                Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(res.Text); }));
+
+                sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
+                sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+            }
             
             if (AudioPlay && wavFile != null) { wavFile.Stop(); wavFile.Play(); }
 
@@ -150,6 +168,8 @@ namespace Barcode_Reader
             EnterCheck = enterCheck.Checked;
             if (EnterCheck)
                 pasteCheck.Checked = true;
+            else
+                multiCheck.Checked = false;
         }
 
         bool AudioPlay = true;
@@ -171,6 +191,15 @@ namespace Barcode_Reader
         private void NoiseCheck_CheckedChanged(object sender, EventArgs e)
         {
             scanner.TryHarder = noiseCheck.Checked;
+        }
+
+        bool MultiCheck = false;
+        private void MultiCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            MultiCheck = multiCheck.Checked;
+            scanner.DecodeMultiple = MultiCheck;
+            if (MultiCheck)
+                enterCheck.Checked = true;
         }
     }
 }

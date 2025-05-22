@@ -45,13 +45,14 @@
             this.rotateCheck = new System.Windows.Forms.CheckBox();
             this.invertedCheck = new System.Windows.Forms.CheckBox();
             this.noiseCheck = new System.Windows.Forms.CheckBox();
+            this.multiCheck = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.time)).BeginInit();
             this.SuspendLayout();
             // 
             // startBtn
             // 
             this.startBtn.Enabled = false;
-            this.startBtn.Location = new System.Drawing.Point(166, 107);
+            this.startBtn.Location = new System.Drawing.Point(166, 99);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(75, 37);
             this.startBtn.TabIndex = 4;
@@ -83,7 +84,7 @@
             // stopBtn
             // 
             this.stopBtn.Enabled = false;
-            this.stopBtn.Location = new System.Drawing.Point(85, 107);
+            this.stopBtn.Location = new System.Drawing.Point(85, 99);
             this.stopBtn.Name = "stopBtn";
             this.stopBtn.Size = new System.Drawing.Size(75, 37);
             this.stopBtn.TabIndex = 5;
@@ -94,7 +95,7 @@
             // time
             // 
             this.time.DecimalPlaces = 2;
-            this.time.Location = new System.Drawing.Point(237, 164);
+            this.time.Location = new System.Drawing.Point(237, 149);
             this.time.Maximum = new decimal(new int[] {
             10,
             0,
@@ -120,7 +121,7 @@
             this.audioPlay.AutoSize = true;
             this.audioPlay.Checked = true;
             this.audioPlay.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.audioPlay.Location = new System.Drawing.Point(172, 298);
+            this.audioPlay.Location = new System.Drawing.Point(172, 286);
             this.audioPlay.Name = "audioPlay";
             this.audioPlay.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.audioPlay.Size = new System.Drawing.Size(157, 17);
@@ -134,7 +135,7 @@
             this.enterCheck.AutoSize = true;
             this.enterCheck.Checked = true;
             this.enterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.enterCheck.Location = new System.Drawing.Point(201, 272);
+            this.enterCheck.Location = new System.Drawing.Point(201, 259);
             this.enterCheck.Name = "enterCheck";
             this.enterCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.enterCheck.Size = new System.Drawing.Size(128, 17);
@@ -148,7 +149,7 @@
             this.pasteCheck.AutoSize = true;
             this.pasteCheck.Checked = true;
             this.pasteCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.pasteCheck.Location = new System.Drawing.Point(167, 249);
+            this.pasteCheck.Location = new System.Drawing.Point(167, 235);
             this.pasteCheck.Name = "pasteCheck";
             this.pasteCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.pasteCheck.Size = new System.Drawing.Size(162, 17);
@@ -162,7 +163,7 @@
             this.copyCheck.AutoSize = true;
             this.copyCheck.Checked = true;
             this.copyCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.copyCheck.Location = new System.Drawing.Point(144, 226);
+            this.copyCheck.Location = new System.Drawing.Point(144, 211);
             this.copyCheck.Name = "copyCheck";
             this.copyCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.copyCheck.Size = new System.Drawing.Size(185, 17);
@@ -174,7 +175,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(296, 167);
+            this.label1.Location = new System.Drawing.Point(296, 152);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(32, 13);
@@ -184,7 +185,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 167);
+            this.label2.Location = new System.Drawing.Point(14, 152);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(221, 13);
@@ -193,7 +194,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 195);
+            this.textBox1.Location = new System.Drawing.Point(12, 180);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 20);
             this.textBox1.TabIndex = 13;
@@ -224,7 +225,7 @@
             // rotateCheck
             // 
             this.rotateCheck.AutoSize = true;
-            this.rotateCheck.Location = new System.Drawing.Point(193, 326);
+            this.rotateCheck.Location = new System.Drawing.Point(193, 314);
             this.rotateCheck.Name = "rotateCheck";
             this.rotateCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rotateCheck.Size = new System.Drawing.Size(136, 17);
@@ -236,7 +237,7 @@
             // invertedCheck
             // 
             this.invertedCheck.AutoSize = true;
-            this.invertedCheck.Location = new System.Drawing.Point(12, 326);
+            this.invertedCheck.Location = new System.Drawing.Point(12, 314);
             this.invertedCheck.Name = "invertedCheck";
             this.invertedCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.invertedCheck.Size = new System.Drawing.Size(139, 17);
@@ -248,7 +249,7 @@
             // noiseCheck
             // 
             this.noiseCheck.AutoSize = true;
-            this.noiseCheck.Location = new System.Drawing.Point(67, 349);
+            this.noiseCheck.Location = new System.Drawing.Point(122, 338);
             this.noiseCheck.Name = "noiseCheck";
             this.noiseCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.noiseCheck.Size = new System.Drawing.Size(207, 17);
@@ -257,11 +258,24 @@
             this.noiseCheck.UseVisualStyleBackColor = true;
             this.noiseCheck.CheckedChanged += new System.EventHandler(this.NoiseCheck_CheckedChanged);
             // 
+            // multiCheck
+            // 
+            this.multiCheck.AutoSize = true;
+            this.multiCheck.Location = new System.Drawing.Point(91, 362);
+            this.multiCheck.Name = "multiCheck";
+            this.multiCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.multiCheck.Size = new System.Drawing.Size(238, 17);
+            this.multiCheck.TabIndex = 16;
+            this.multiCheck.Text = "قراءة أكثر من باركود في اللحظة الواحدة (بطيء)";
+            this.multiCheck.UseVisualStyleBackColor = true;
+            this.multiCheck.CheckedChanged += new System.EventHandler(this.MultiCheck_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 372);
+            this.ClientSize = new System.Drawing.Size(341, 386);
+            this.Controls.Add(this.multiCheck);
             this.Controls.Add(this.noiseCheck);
             this.Controls.Add(this.invertedCheck);
             this.Controls.Add(this.rotateCheck);
@@ -309,6 +323,7 @@
         private System.Windows.Forms.CheckBox rotateCheck;
         private System.Windows.Forms.CheckBox invertedCheck;
         private System.Windows.Forms.CheckBox noiseCheck;
+        private System.Windows.Forms.CheckBox multiCheck;
     }
 }
 

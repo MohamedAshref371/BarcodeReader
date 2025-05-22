@@ -20,6 +20,7 @@ namespace Barcode_Reader
         public bool AutoRotate { set => reader.AutoRotate = value; }
         public bool TryInverted { set => reader.Options.TryInverted = value; }
         public bool TryHarder { set => reader.Options.TryHarder = value; }
+        public bool DecodeMultiple = false;
 
         public string[] Init()
         {
@@ -53,9 +54,18 @@ namespace Barcode_Reader
 
             try
             {
-                Result result = reader.Decode(eventArgs.Frame);
-                if (result != null)
-                    Form1.Form.Execute(result.Text);
+                if (DecodeMultiple)
+                {
+                    Result[] results = reader.DecodeMultiple(eventArgs.Frame);
+                    if (results != null)
+                        Form1.Form.MutiExecute(results);
+                }
+                else
+                {
+                    Result result = reader.Decode(eventArgs.Frame);
+                    if (result != null)
+                        Form1.Form.Execute(result.Text);
+                }
             }
             catch { }
 
