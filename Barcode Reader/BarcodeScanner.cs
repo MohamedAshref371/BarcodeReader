@@ -2,6 +2,9 @@
 using AForge.Video.DirectShow;
 using ZXing;
 using System.Linq;
+using System.Drawing;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Barcode_Reader
 {
@@ -52,25 +55,38 @@ namespace Barcode_Reader
             if (isProcessing) return;
             isProcessing = true;
 
+            Task.Run(() => TaskRun((Bitmap)eventArgs.Frame.Clone()));
+        }
+
+        private async Task TaskRun(Bitmap copyFrame)
+        {
             try
             {
                 if (DecodeMultiple)
                 {
-                    Result[] results = reader.DecodeMultiple(eventArgs.Frame);
-                    if (results != null)
+                    Result[] results = reader.DecodeMultiple(copyFrame);
+                    if (results?.Length >= 2)
+                    {
                         Form1.Form.MutiExecute(results);
+                        await Task.Delay(1000);
+                    }
+                    else if (results?.Length == 1)
+                        Form1.Form.Execute(results[0].Text);
                 }
                 else
                 {
-                    Result result = reader.Decode(eventArgs.Frame);
+                    Result result = reader.Decode(copyFrame);
                     if (result != null)
                         Form1.Form.Execute(result.Text);
                 }
             }
             catch { }
-
-            System.Threading.Thread.Sleep(125);
-            isProcessing = false;
+            finally
+            {
+                copyFrame.Dispose();
+                await Task.Delay(125);
+                isProcessing = false;
+            }
         }
 
         public void Stop()
