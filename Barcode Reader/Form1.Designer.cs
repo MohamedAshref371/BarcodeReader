@@ -261,12 +261,12 @@
             // multiCheck
             // 
             this.multiCheck.AutoSize = true;
-            this.multiCheck.Location = new System.Drawing.Point(91, 362);
+            this.multiCheck.Location = new System.Drawing.Point(37, 362);
             this.multiCheck.Name = "multiCheck";
             this.multiCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.multiCheck.Size = new System.Drawing.Size(238, 17);
+            this.multiCheck.Size = new System.Drawing.Size(292, 17);
             this.multiCheck.TabIndex = 16;
-            this.multiCheck.Text = "قراءة أكثر من باركود في اللحظة الواحدة (بطيء)";
+            this.multiCheck.Text = "قراءة أكثر من باركود في اللحظة الواحدة (بطيء - ليس جيدا)";
             this.multiCheck.UseVisualStyleBackColor = true;
             this.multiCheck.CheckedChanged += new System.EventHandler(this.MultiCheck_CheckedChanged);
             // 
