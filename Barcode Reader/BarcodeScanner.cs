@@ -2,7 +2,6 @@
 using AForge.Video.DirectShow;
 using ZXing;
 using System.Linq;
-using System.Drawing;
 
 namespace Barcode_Reader
 {
@@ -18,6 +17,9 @@ namespace Barcode_Reader
             reader = new BarcodeReader();
         }
 
+        public bool AutoRotate { set => reader.AutoRotate = value; }
+        public bool TryInverted { set => reader.Options.TryInverted = value; }
+
         public string[] Init()
         {
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -30,7 +32,7 @@ namespace Barcode_Reader
             videoSource = new VideoCaptureDevice(videoDevices[camera].MonikerString);
             
             VideoCapabilities[] caps = videoSource.VideoCapabilities;
-            lowestQualitySettingIndex = Enumerable.Range(0, caps.Length).OrderBy(i => caps[i].FrameSize.Width * caps[i].FrameSize.Height * caps[i].AverageFrameRate).FirstOrDefault();
+            lowestQualitySettingIndex = Enumerable.Range(0, caps.Length).OrderBy(i => caps[i].FrameSize.Width * caps[i].FrameSize.Height).FirstOrDefault();
             
             return caps.Select(cap => $"{cap.FrameSize.Width}x{cap.FrameSize.Height}   {cap.AverageFrameRate}fps").ToArray();
         }
@@ -48,24 +50,16 @@ namespace Barcode_Reader
             if (isProcessing) return;
             isProcessing = true;
 
-            Bitmap frameCopy = (Bitmap)eventArgs.Frame.Clone();
-
-            System.Threading.Tasks.Task.Run(() =>
+            try
             {
-                try
-                {
-                    var result = reader.Decode(frameCopy);
-                    if (result != null)
-                        Form1.Form.Execute(result.Text);
-                }
-                catch { }
-                finally
-                {
-                    frameCopy.Dispose();
-                    System.Threading.Thread.Sleep(125);
-                    isProcessing = false;
-                }
-            });
+                Result result = reader.Decode(eventArgs.Frame);
+                if (result != null)
+                    Form1.Form.Execute(result.Text);
+            }
+            catch { }
+
+            System.Threading.Thread.Sleep(125);
+            isProcessing = false;
         }
 
         public void Stop()

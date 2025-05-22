@@ -42,6 +42,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.qualities = new System.Windows.Forms.ComboBox();
             this.qualityBtn = new System.Windows.Forms.Button();
+            this.rotateCheck = new System.Windows.Forms.CheckBox();
+            this.invertedCheck = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.time)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,7 +117,7 @@
             this.audioPlay.AutoSize = true;
             this.audioPlay.Checked = true;
             this.audioPlay.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.audioPlay.Location = new System.Drawing.Point(103, 311);
+            this.audioPlay.Location = new System.Drawing.Point(172, 298);
             this.audioPlay.Name = "audioPlay";
             this.audioPlay.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.audioPlay.Size = new System.Drawing.Size(157, 17);
@@ -129,7 +131,7 @@
             this.enterCheck.AutoSize = true;
             this.enterCheck.Checked = true;
             this.enterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.enterCheck.Location = new System.Drawing.Point(132, 285);
+            this.enterCheck.Location = new System.Drawing.Point(201, 272);
             this.enterCheck.Name = "enterCheck";
             this.enterCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.enterCheck.Size = new System.Drawing.Size(128, 17);
@@ -143,7 +145,7 @@
             this.pasteCheck.AutoSize = true;
             this.pasteCheck.Checked = true;
             this.pasteCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.pasteCheck.Location = new System.Drawing.Point(98, 262);
+            this.pasteCheck.Location = new System.Drawing.Point(167, 249);
             this.pasteCheck.Name = "pasteCheck";
             this.pasteCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.pasteCheck.Size = new System.Drawing.Size(162, 17);
@@ -157,7 +159,7 @@
             this.copyCheck.AutoSize = true;
             this.copyCheck.Checked = true;
             this.copyCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.copyCheck.Location = new System.Drawing.Point(75, 239);
+            this.copyCheck.Location = new System.Drawing.Point(144, 226);
             this.copyCheck.Name = "copyCheck";
             this.copyCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.copyCheck.Size = new System.Drawing.Size(185, 17);
@@ -188,10 +190,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 201);
+            this.textBox1.Location = new System.Drawing.Point(12, 195);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 20);
             this.textBox1.TabIndex = 15;
+            this.textBox1.Text = "https://github.com/MohamedAshref371/BarcodeReader";
             this.textBox1.Visible = false;
             // 
             // qualities
@@ -214,11 +217,37 @@
             this.qualityBtn.UseVisualStyleBackColor = true;
             this.qualityBtn.Click += new System.EventHandler(this.QualityBtn_Click);
             // 
+            // rotateCheck
+            // 
+            this.rotateCheck.AutoSize = true;
+            this.rotateCheck.Location = new System.Drawing.Point(193, 326);
+            this.rotateCheck.Name = "rotateCheck";
+            this.rotateCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.rotateCheck.Size = new System.Drawing.Size(136, 17);
+            this.rotateCheck.TabIndex = 18;
+            this.rotateCheck.Text = "دعم قراءة الباركود المائل";
+            this.rotateCheck.UseVisualStyleBackColor = true;
+            this.rotateCheck.CheckedChanged += new System.EventHandler(this.RotateCheck_CheckedChanged);
+            // 
+            // invertedCheck
+            // 
+            this.invertedCheck.AutoSize = true;
+            this.invertedCheck.Location = new System.Drawing.Point(12, 326);
+            this.invertedCheck.Name = "invertedCheck";
+            this.invertedCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.invertedCheck.Size = new System.Drawing.Size(139, 17);
+            this.invertedCheck.TabIndex = 19;
+            this.invertedCheck.Text = "دعم قراءة الباركود الأبيض";
+            this.invertedCheck.UseVisualStyleBackColor = true;
+            this.invertedCheck.CheckedChanged += new System.EventHandler(this.InvertedCheck_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 342);
+            this.ClientSize = new System.Drawing.Size(341, 354);
+            this.Controls.Add(this.invertedCheck);
+            this.Controls.Add(this.rotateCheck);
             this.Controls.Add(this.qualities);
             this.Controls.Add(this.qualityBtn);
             this.Controls.Add(this.textBox1);
@@ -260,6 +289,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox qualities;
         private System.Windows.Forms.Button qualityBtn;
+        private System.Windows.Forms.CheckBox rotateCheck;
+        private System.Windows.Forms.CheckBox invertedCheck;
     }
 }
 

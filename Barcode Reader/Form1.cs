@@ -145,5 +145,15 @@ namespace Barcode_Reader
         {
             AudioPlay = audioPlay.Checked;
         }
+
+        private void RotateCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            scanner.AutoRotate = rotateCheck.Checked;
+        }
+
+        private void InvertedCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            scanner.TryInverted = invertedCheck.Checked;
+        }
     }
 }
