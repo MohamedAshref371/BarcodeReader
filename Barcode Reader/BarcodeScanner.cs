@@ -19,6 +19,7 @@ namespace Barcode_Reader
 
         public bool AutoRotate { set => reader.AutoRotate = value; }
         public bool TryInverted { set => reader.Options.TryInverted = value; }
+        public bool TryHarder { set => reader.Options.TryHarder = value; }
 
         public string[] Init()
         {

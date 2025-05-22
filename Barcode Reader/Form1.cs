@@ -167,5 +167,10 @@ namespace Barcode_Reader
         {
             scanner.TryInverted = invertedCheck.Checked;
         }
+
+        private void NoiseCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            scanner.TryHarder = noiseCheck.Checked;
+        }
     }
 }

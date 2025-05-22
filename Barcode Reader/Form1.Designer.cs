@@ -44,6 +44,7 @@
             this.qualityBtn = new System.Windows.Forms.Button();
             this.rotateCheck = new System.Windows.Forms.CheckBox();
             this.invertedCheck = new System.Windows.Forms.CheckBox();
+            this.noiseCheck = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.time)).BeginInit();
             this.SuspendLayout();
             // 
@@ -244,11 +245,24 @@
             this.invertedCheck.UseVisualStyleBackColor = true;
             this.invertedCheck.CheckedChanged += new System.EventHandler(this.InvertedCheck_CheckedChanged);
             // 
+            // noiseCheck
+            // 
+            this.noiseCheck.AutoSize = true;
+            this.noiseCheck.Location = new System.Drawing.Point(85, 349);
+            this.noiseCheck.Name = "noiseCheck";
+            this.noiseCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.noiseCheck.Size = new System.Drawing.Size(174, 17);
+            this.noiseCheck.TabIndex = 15;
+            this.noiseCheck.Text = "دعم الباركود غير المثالي (بطيء)";
+            this.noiseCheck.UseVisualStyleBackColor = true;
+            this.noiseCheck.CheckedChanged += new System.EventHandler(this.NoiseCheck_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 354);
+            this.ClientSize = new System.Drawing.Size(341, 372);
+            this.Controls.Add(this.noiseCheck);
             this.Controls.Add(this.invertedCheck);
             this.Controls.Add(this.rotateCheck);
             this.Controls.Add(this.qualities);
@@ -294,6 +308,7 @@
         private System.Windows.Forms.Button qualityBtn;
         private System.Windows.Forms.CheckBox rotateCheck;
         private System.Windows.Forms.CheckBox invertedCheck;
+        private System.Windows.Forms.CheckBox noiseCheck;
     }
 }
 
