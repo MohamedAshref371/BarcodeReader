@@ -248,12 +248,12 @@
             // noiseCheck
             // 
             this.noiseCheck.AutoSize = true;
-            this.noiseCheck.Location = new System.Drawing.Point(85, 349);
+            this.noiseCheck.Location = new System.Drawing.Point(67, 349);
             this.noiseCheck.Name = "noiseCheck";
             this.noiseCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.noiseCheck.Size = new System.Drawing.Size(174, 17);
+            this.noiseCheck.Size = new System.Drawing.Size(207, 17);
             this.noiseCheck.TabIndex = 15;
-            this.noiseCheck.Text = "دعم الباركود غير المثالي (بطيء)";
+            this.noiseCheck.Text = "قراءة أعمق للباركود غير المثالي (بطيء)";
             this.noiseCheck.UseVisualStyleBackColor = true;
             this.noiseCheck.CheckedChanged += new System.EventHandler(this.NoiseCheck_CheckedChanged);
             // 
