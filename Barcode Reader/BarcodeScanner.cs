@@ -55,10 +55,13 @@ namespace Barcode_Reader
             if (isProcessing) return;
             isProcessing = true;
 
-            Task.Run(() => TaskRun((Bitmap)eventArgs.Frame.Clone()));
+            copyFrame = (Bitmap)eventArgs.Frame.Clone();
+            
+            Task.Run(TaskRun);
         }
 
-        private async Task TaskRun(Bitmap copyFrame)
+        Bitmap copyFrame;
+        private async Task TaskRun()
         {
             try
             {
