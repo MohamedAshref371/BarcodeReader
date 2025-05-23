@@ -69,7 +69,7 @@ namespace Barcode_Reader
                     Result[] results = reader.DecodeMultiple(copyFrame);
                     if (results?.Length >= 2)
                     {
-                        Form1.Form.MutiExecute(results);
+                        Form1.Form.MultiExecute(results.Select(res => res.Text).ToArray());
                         await Task.Delay(1000);
                     }
                     else if (results?.Length == 1)

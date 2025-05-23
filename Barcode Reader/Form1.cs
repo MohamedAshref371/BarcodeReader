@@ -113,14 +113,14 @@ namespace Barcode_Reader
             isProcessing = false;
         }
 
-        public void MutiExecute(ZXing.Result[] arr)
+        public void MultiExecute(string[] arr)
         {
             if (isProcessing) return;
             isProcessing = true;
 
-            foreach (ZXing.Result res in arr)
+            foreach (string res in arr)
             {
-                Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(res.Text); }));
+                Invoke(new Action(() => { Clipboard.Clear(); Clipboard.SetText(res); }));
 
                 sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_V);
                 sim.Keyboard.KeyPress(VirtualKeyCode.RETURN);
